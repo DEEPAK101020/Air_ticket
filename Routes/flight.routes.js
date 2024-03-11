@@ -83,7 +83,19 @@ flightRouter.put("/api/flight/:id",auth,async(req,res)=>{
         }
             
     } catch (error) {
-        res.status(500).send("error adding flight")
+        res.status(500).send("error updating flight")
     }
 })
 
+
+//delete
+
+flightRouter.delete("/api/flight/:id",auth,async(req,res)=>{
+    try {
+        const flight=await FlightModel.findByIdAndDelete(req.params.id);
+        if(!flight) return res.status(404).send("flight not found")
+        res.status(202).send("flight deleted sucessfully")
+    } catch (error) {
+        res.status(500).send("error deleteing flight")
+    }
+})
