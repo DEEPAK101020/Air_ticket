@@ -38,3 +38,13 @@ http://localhost:3000/booking/api/dashboard
 - `user` (string, optional): The user ID for filtering the dashboard data.
 - `flight` (string, optional): The flight ID for filtering the dashboard data.
 
+## Update Booking Dashboard
+
+This endpoint is used to update the booking dashboard for a specific user.
+http://localhost:3000/booking/api/dashboard/65eef95c2610b5257c3ec1c4
+
+### Request Body
+
+- `user` (text): The user information for the booking dashboard.
+- `flight` (text): The flight information for the booking dashboard.
+
