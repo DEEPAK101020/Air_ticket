@@ -72,3 +72,15 @@ http://localhost:3000/booking/api/dashboard/65eef95c2610b5257c3ec1c4
 - `user` (text): The user information for the booking dashboard.
 - `flight` (text): The flight information for the booking dashboard.
 
+## Flight Information
+
+- **Airline**: Air India
+- **Flight Number**: 200
+- **Departure**: India
+- **Arrival**: 26:11
+- **Departure Time**: 2014-12-23T19:10:00.000Z
+- **Arrival Time**: 2015-12-23T19:10:00.000Z
+- **Seats Available**: 100
+- **Price**: $600,000
+
+
