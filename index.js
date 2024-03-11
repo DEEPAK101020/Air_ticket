@@ -7,7 +7,7 @@ const {connection}=require("./db")
 const {Userrouter}=require("./Routes/user.routes")
 
 const app=express();
-
+app.use(express.json())
 
 app.use("/user",Userrouter)
 
