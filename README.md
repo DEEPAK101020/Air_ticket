@@ -1,3 +1,25 @@
+# Air Ticket Booking Backend API
+
+This is the backend API for the Air Ticket Booking system. It provides endpoints for user authentication, flight management, and booking operations.
+
+## Technologies Used
+
+- Node.js
+- Express.js
+- MongoDB
+- bcrypt (for password hashing)
+- JWT (for authentication)
+- dotenv (for environment variables)
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd <project-folder>
+
+
 backend deployed on https://air-ticket-q4ih.onrender.com/
 
 ## User Registration
