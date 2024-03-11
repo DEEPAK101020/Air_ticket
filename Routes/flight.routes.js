@@ -67,7 +67,7 @@ flightRouter.put("/api/flight/:id",auth,async(req,res)=>{
         arrivalTime,
         seats,
         price}=req.body;
-        const flight=await FlightModel.findByIdAndUpdate(req,params.id,{airline,
+        const flight=await FlightModel.findByIdAndUpdate(req.params.id,{airline,
             flightNo,
             departure,
             arrival,

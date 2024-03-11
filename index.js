@@ -11,7 +11,7 @@ const app=express();
 app.use(express.json())
 
 app.use("/user",Userrouter)
-app.use("flight",flightRouter)
+app.use("/flight",flightRouter)
 
 
 app.listen(3000,async(req,res)=>{

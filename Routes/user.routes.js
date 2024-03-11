@@ -28,30 +28,31 @@ Userrouter.post("/register",async(req,res)=>{
 })
 
 //
-Userrouter.post("/login",async(req,res)=>{
-    const {email,password}=req.body;
+Userrouter.post("/login", async (req, res) => {
+    const { email, password } = req.body;
     try {
-        const user=await UserModel.findOne({email});
-        if(user){
-            bcrypt.compare(password,user.password,(err,pass)=>{
-                if(error){
-                    return res.status(401).json({msg:"user does not exist"})
-
+        const user = await UserModel.findOne({ email });
+        if (user) {
+            bcrypt.compare(password, user.password, (err, pass) => {
+                if (err) {
+                    return res.status(401).json({ msg: "Invalid credentials" });
                 }
-                if(pass){
-                    const secret_key=process.env.secret_key;
-                    const token=jwt.sign({userID:user_id},secret_key,{expiresIn:"7d"})
+                if (pass) {
+                    const secret_key = process.env.secret_key;
+                    const token = jwt.sign({ userID: user._id }, secret_key, { expiresIn: "7d" });
+                    res.status(200).json({ token });
+                } else {
+                    res.status(401).json({ msg: "Invalid credentials" });
                 }
-            })
-        }
-        else{
-            res.status(400).json({msg:"user does not exist"})
-
+            });
+        } else {
+            res.status(401).json({ msg: "User does not exist" });
         }
     } catch (error) {
-        res.status(500).json({err: err})
+        res.status(500).json({ err: error.message });
     }
-})
+});
+
 module.exports={
     Userrouter
 }

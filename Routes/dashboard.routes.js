@@ -17,6 +17,10 @@ bookingrouter.post("/api/booking",auth,async(req,res)=>{
     } catch (error) {
         res.status(500).send(error)
     }
+
+})
+
+bookingrouter.get("/api/dashboard",auth,async(req,res)=>{
     
 })
 module.exports={
