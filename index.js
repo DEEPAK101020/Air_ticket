@@ -5,11 +5,14 @@ const bodyParser=require("body-parser");
 const bcrypt=require("bcrypt");
 const {connection}=require("./db")
 const {Userrouter}=require("./Routes/user.routes")
+const {flightRouter}=require("./Routes/flight.routes")
 
 const app=express();
 app.use(express.json())
 
 app.use("/user",Userrouter)
+app.use("flight",flightRouter)
+
 
 app.listen(3000,async(req,res)=>{
     try {

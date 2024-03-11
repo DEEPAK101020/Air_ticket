@@ -99,3 +99,7 @@ flightRouter.delete("/api/flight/:id",auth,async(req,res)=>{
         res.status(500).send("error deleteing flight")
     }
 })
+
+module.exports={
+    flightRouter
+}
