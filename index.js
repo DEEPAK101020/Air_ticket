@@ -13,7 +13,7 @@ app.use(express.json())
 
 app.use("/user",Userrouter)
 app.use("/flight",flightRouter)
-app.use("/bookings",bookingrouter)
+app.use("/booking",bookingrouter)
 
 app.get("/",(req,res)=>{
     res.send("this is home page");

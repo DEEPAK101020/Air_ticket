@@ -10,7 +10,7 @@ bookingrouter.post("/api/booking",auth,async(req,res)=>{
         const {flightid}=req.body;
         const booking=new BookingModel({
             user:req.body.user,
-            fligh:flightid
+            flight:flightid
         })
         await booking.save();
         res.status(201).send("booking sucessfull")
@@ -23,7 +23,7 @@ bookingrouter.post("/api/booking",auth,async(req,res)=>{
 //get booking..
 bookingrouter.get('/api/dashboard', auth, async (req, res) => {
     try {
-      const bookings = await Booking.find({ user: req.body.userID }).populate('user flight');
+      const bookings = await BookingModel.find().populate('user').populate('flight');
       res.status(200).json(bookings);
     } catch (error) {
       res.status(500).send(error.message);
@@ -33,10 +33,10 @@ bookingrouter.get('/api/dashboard', auth, async (req, res) => {
 
 //put booking 
 
-bookingRouter.put('/api/dashboard/:id', auth, async (req, res) => {
+bookingrouter.put('/api/dashboard/:id', auth, async (req, res) => {
     try {
       const { flightId } = req.body;
-      const booking = await Booking.findByIdAndUpdate(
+      const booking = await BookingModel.findByIdAndUpdate(
         req.params.id,
         {
           user: req.body.userID,
@@ -56,7 +56,7 @@ bookingRouter.put('/api/dashboard/:id', auth, async (req, res) => {
 
 bookingrouter.delete('/api/dashboard/:id', auth, async (req, res) => {
     try {
-      const booking = await Booking.findByIdAndDelete(req.params.id);
+      const booking = await BookingModel.findByIdAndDelete(req.params.id);
       if (!booking) return res.status(404).send('Booking not found');
       res.status(202).send('Booking deleted successfully');
     } catch (error) {
