@@ -13,7 +13,7 @@ app.use("/user",Userrouter)
 
 app.listen(3000,async(req,res)=>{
     try {
-        await mongoose.connection
+        await connection
         console.log("connected to dB");
         console.log("port is running on 3000")
     } catch (error) {
