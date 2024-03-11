@@ -100,6 +100,7 @@ flightRouter.delete("/api/flight/:id",auth,async(req,res)=>{
     }
 })
 
+
 module.exports={
     flightRouter
 }

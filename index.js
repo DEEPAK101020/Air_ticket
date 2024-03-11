@@ -6,12 +6,18 @@ const bcrypt=require("bcrypt");
 const {connection}=require("./db")
 const {Userrouter}=require("./Routes/user.routes")
 const {flightRouter}=require("./Routes/flight.routes")
+const {bookingrouter}=require("./Routes/dashboard.routes")
 
 const app=express();
 app.use(express.json())
 
 app.use("/user",Userrouter)
 app.use("/flight",flightRouter)
+app.use("/bookings",bookingrouter)
+
+app.get("/",(req,res)=>{
+    res.send("this is home page");
+})
 
 
 app.listen(3000,async(req,res)=>{
