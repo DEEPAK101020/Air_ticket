@@ -29,3 +29,61 @@ flightRouter.get("/:id",async(req,res)=>{
 
 
 //post
+
+flightRouter.post("/api/flight",auth,async(req,res)=>{
+    try {
+        const { airline,
+        flightNo,
+        departure,
+        arrival,
+        departureTime,
+        arrivalTime,
+        seats,
+        price}=req.body;
+        const flight=new FlightModel({airline,
+            flightNo,
+            departure,
+            arrival,
+            departureTime,
+            arrivalTime,
+            seats,
+            price})
+            await flight.save();
+            res.status(201).send("new flight added")
+    } catch (error) {
+        res.status(500).send("error adding flight")
+    }
+})
+
+
+//updating the fight
+flightRouter.put("/api/flight/:id",auth,async(req,res)=>{
+    try {
+        const { airline,
+        flightNo,
+        departure,
+        arrival,
+        departureTime,
+        arrivalTime,
+        seats,
+        price}=req.body;
+        const flight=await FlightModel.findByIdAndUpdate(req,params.id,{airline,
+            flightNo,
+            departure,
+            arrival,
+            departureTime,
+            arrivalTime,
+            seats,
+            price},{new:true}
+            )
+            if(!flight)
+            return  res.status(404).send("flight not found");
+        else{
+            res.status(204).send("flight details updated")
+        }
+            
+    } catch (error) {
+        res.status(500).send("error adding flight")
+    }
+})
+
